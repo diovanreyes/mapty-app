@@ -5,12 +5,11 @@ class Workout {
   id = (Date.now() + '').slice(-10);
 
   constructor(coords, distance, duration) {
-    this.coords = coords; //[lat,lng]
+    this.coords = coords; 
     this.distance = distance;
     this.duration = duration;
   }
   _setDescription() {
-    // prettier-ignore
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${
@@ -83,9 +82,6 @@ class App {
 
   _loadMap(position) {
     const { latitude, longitude } = position.coords;
-    // console.log(position)
-    // const {longitude} = position.coords;
-    // console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
 
     const coords = [latitude, longitude];
 
@@ -114,9 +110,9 @@ class App {
       inputDuration.value =
       inputElevation.value =
         '';
-    // form.style.display = 'none';
+    
     form.classList.add('hidden');
-    // setTimeout(() => form.style.display = 'grid', 1000)
+    
   }
 
   _toggleElevationField() {
@@ -237,7 +233,7 @@ class App {
 
   _moveToPopup(e) {
     const workoutEl = e.target.closest('.workout');
-    // console.log(workoutEl)
+   
     if (!workoutEl) return;
 
     const workout = this.#workouts.find(w => w.id === workoutEl.dataset.id);
@@ -266,11 +262,10 @@ class App {
     localStorage.removeItem('workouts')
     location.reload()
   }
-  // const popup = document.querySelector('.leaflet-popup-content-wrapper')
+
 }
 
 const app = new App();
 const clear = () => app.reset()
 
-// console.log(app);
 
